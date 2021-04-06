@@ -1,0 +1,2 @@
+Linha 10: identificador idade nao declarado
+Fim da compilacao

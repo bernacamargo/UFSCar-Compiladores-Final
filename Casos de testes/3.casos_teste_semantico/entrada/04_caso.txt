@@ -1,0 +1,11 @@
+{ Cria tabela de funcionario }
+
+inicio
+    cria Funcionario [
+        nome        -> varcha,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> 
+    ]
+    
+fim
