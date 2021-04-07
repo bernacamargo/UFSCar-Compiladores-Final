@@ -8,6 +8,6 @@ inicio
         profissao   -> texto
     ]
 
-    mostra todos Funcionario onde nome = "asd" e idade > 4 e cpf > 2
+    mostra nome Funcionario onde nome = "asd" e idade > 4 e cpf > 2
 
 fim
