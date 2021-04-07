@@ -28,10 +28,13 @@ FECHA_COLCHETE: ']';
 SETA: '->';
 VERDADEIRO: 'verdadeiro';
 FALSO: 'falso';
+OP_OU: 'ou';
+OP_E: 'e';
+NAO: 'não';
 
 // tipos
 VARCHAR: 'varchar';
-LITERAL: 'texto';
+TEXTO: 'texto';
 INTEIRO: 'inteiro';
 REAL: 'real';
 LOGICO: 'logico';
@@ -58,15 +61,23 @@ corpo: cmd*;
 
 cmd: cmd_mostra | cmd_cria;
 
-cmd_cria: CRIA IDENT ABRE_COLCHETE identificador (VIRGULA identificador)* FECHA_COLCHETE;
+cmd_cria: CRIA identificador ABRE_COLCHETE declaracao_var (VIRGULA declaracao_var)* FECHA_COLCHETE;
 
-identificador: IDENT SETA tipos_basicos;
+identificador: IDENT;
 
-tipos_basicos: LITERAL | INTEIRO | REAL | VARCHAR;
+declaracao_var: identificador SETA tipos_basicos;
 
-cmd_mostra: MOSTRA colunas IDENT ONDE expressao_relacional (VIRGULA expressao_relacional)*;
+tipos_basicos: TEXTO | INTEIRO | REAL | VARCHAR;
 
-colunas: IDENT (VIRGULA IDENT)* | TODOS;
+cmd_mostra: MOSTRA colunas identificador ONDE expressao;
+
+expressao: termo_logico (OP_OU termo_logico)*;
+
+termo_logico: fator_logico (OP_E fator_logico)*;
+
+fator_logico: NAO? expressao_relacional;
+
+colunas: identificador (VIRGULA identificador)* | TODOS;
 
 expressao_relacional: expressao_aritmetica (op_relacional expressao_aritmetica);
 
@@ -76,7 +87,9 @@ expressao_aritmetica: termo (op1 termo)*;
 
 termo: fator (op2 fator)*;
 
-fator: NUM_INT | NUM_REAL;
+fator: NUM_INT | NUM_REAL | parcela_nao_numerica;
+
+parcela_nao_numerica: identificador | CADEIA;
 
 op1: OP_MAIS | OP_MENOS;
 

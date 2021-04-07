@@ -2,10 +2,12 @@
 
 inicio
     cria Funcionario [
-        nome        -> varcha,
+        nome        -> varchar,
         idade       -> inteiro,
         cpf         -> inteiro,
-        profissao   -> tex
+        profissao   -> texto
     ]
+
+    mostra todos Funcionario onde nome = "asd" e idade > 4
     
 fim

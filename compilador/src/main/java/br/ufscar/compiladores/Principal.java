@@ -24,7 +24,9 @@ public class Principal {
             // Analisador Sintatico
             if (CharStreams.fromFileName(args[1]).size() == 0){
                 // Analisador Semantico
+                Semantico semanticoVisitor = new Semantico();
 
+                semanticoVisitor.visitPrograma(arvore);
 
             }
         }
