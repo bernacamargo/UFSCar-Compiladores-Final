@@ -1,5 +1,7 @@
 package br.ufscar.compiladores;
 
+import java.util.List;
+
 public class Semantico extends LSQLBaseVisitor<Void>{
 
     TabelaDeSimbolos tabelaDeSimbolos;
@@ -11,6 +13,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
     @Override
     public Void visitPrograma(LSQLParser.ProgramaContext ctx) {
         visitCorpo(ctx.corpo());
+        System.out.println(tabelaDeSimbolos.toString());
         return null;
     }
 
@@ -25,21 +28,135 @@ public class Semantico extends LSQLBaseVisitor<Void>{
     @Override
     public Void visitCmd_cria(LSQLParser.Cmd_criaContext ctx) {
 
-        var ident = ctx.identificador().getText();
+        var identificadorTabela = ctx.identificador().getText();
 
-        ctx.declaracao_var().forEach(it -> visitaDeclaracao_var(it, ident));
+        ctx.declaracao_var().forEach(it -> visitaDeclaracao_var(it, identificadorTabela));
 
         return null;
     }
 
-    public Void visitaDeclaracao_var(LSQLParser.Declaracao_varContext ctx, String identificador) {
+    public Void visitaDeclaracao_var(LSQLParser.Declaracao_varContext ctx, String identificadorTabela) {
 
+        var ident = ctx.identificador().getText();
+        var nomeVar = !ident.contains(".") ? identificadorTabela + "." + ident : ident;
         var tipo = ctx.tipos_basicos().getText();
         var tipoLSQL = SemanticoUtils.verificarTipo(tipo);
 
-//        tabelaDeSimbolos.inserir();
+        if (tipoLSQL != null){
+            if(!tabelaDeSimbolos.existe(nomeVar)){
+                tabelaDeSimbolos.inserir(nomeVar, tipoLSQL);
+            }
+            else {
+                SemanticoUtils.adicionaErroSemantico(nomeVar, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_EXISTENTE);
+            }
+        }
+        else {
+            SemanticoUtils.adicionaErroSemantico(tipo, ctx.start.getLine(), ErrosSemanticos.TIPO_INEXISTENTE);
+        }
 
         return null;
     }
 
+    @Override
+    public Void visitCmd_mostra(LSQLParser.Cmd_mostraContext ctx) {
+        var ident = ctx.identificador().getText();
+
+        if (tabelaDeSimbolos.existeIdentificadorTabela(ident)){
+            visitaColunas(ctx.colunas(), ident);
+            visitaExpressao(ctx.expressao(), ident);
+        }
+        else {
+            SemanticoUtils.adicionaErroSemantico(ident, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
+        }
+
+
+
+        return null;
+    }
+
+    private Void visitaColunas(LSQLParser.ColunasContext ctx, String identificadorTabela){
+
+        if (ctx.TODOS() == null) {
+            for (int i=0; i < ctx.identificador().size(); i++) {
+                var ident = ctx.identificador(i).getText();
+                var nomeVar = !ident.contains(".") ? identificadorTabela + "." + ident : ident;
+                if (!tabelaDeSimbolos.existe(nomeVar)) {
+                    SemanticoUtils.adicionaErroSemantico(nomeVar, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private Void visitaExpressao(LSQLParser.ExpressaoContext ctx, String identificadorTabela) {
+
+        var teste = ctx.getText();
+
+        ctx.termo_logico().forEach(it -> visitaTermo_logico(it, identificadorTabela));
+
+        return null;
+    }
+
+    private Void visitaTermo_logico(LSQLParser.Termo_logicoContext ctx, String identificadorTabela) {
+
+        var teste = ctx.getText();
+
+        ctx.fator_logico().forEach(it -> visitaFator_logico(it, identificadorTabela));
+
+        return null;
+    }
+
+    private Void visitaFator_logico(LSQLParser.Fator_logicoContext ctx, String identificadorTabela){
+
+        var teste = ctx.getText();
+
+        visitaExpressao_relacional(ctx.expressao_relacional(), identificadorTabela);
+
+        return null;
+    }
+
+    private Void visitaExpressao_relacional(LSQLParser.Expressao_relacionalContext ctx, String identificadorTabela) {
+
+        var teste = ctx.getText();
+
+        visitaExpressao_aritmetica(ctx.expressao_aritmetica(), identificadorTabela);
+
+        return null;
+    }
+
+    private Void visitaExpressao_aritmetica(List<LSQLParser.Expressao_aritmeticaContext> ctxList, String identificadorTabela) {
+
+        var ctxLeft = ctxList.get(0);
+        var ctxRight = ctxList.get(1);
+
+        var tipoVarRight = "invalido";
+        if (ctxRight.NUM_INT() != null){
+            tipoVarRight = "inteiro";
+        }
+        else if(ctxRight.NUM_REAL() != null){
+            tipoVarRight = "real";
+        }
+        else if(ctxRight.parcela_nao_numerica() != null){
+            if (ctxRight.parcela_nao_numerica().CADEIA() != null)
+                tipoVarRight = "texto";
+        }
+
+        var identLeft = ctxLeft.getText();
+        var nomeVarLeft = !identLeft.contains(".") ? identificadorTabela + "." + identLeft : identLeft;
+        var tipoVarLeft = tabelaDeSimbolos.verificar(nomeVarLeft);
+
+        if (tabelaDeSimbolos.existe(nomeVarLeft)) {
+
+            if(!SemanticoUtils.comparaTipo(tipoVarLeft.tipo, SemanticoUtils.verificarTipo(tipoVarRight))){
+                SemanticoUtils.adicionaErroSemantico(nomeVarLeft, ctxLeft.start.getLine(), ErrosSemanticos.ATRIBUICAO_INCOMPATIVEL);
+            }
+
+        }
+        else{
+            SemanticoUtils.adicionaErroSemantico(nomeVarLeft, ctxLeft.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
+        }
+
+        return null;
+    }
 }

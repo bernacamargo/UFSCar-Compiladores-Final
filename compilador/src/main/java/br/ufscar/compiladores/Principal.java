@@ -3,9 +3,9 @@ package br.ufscar.compiladores;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Token;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Principal {
 
@@ -27,6 +27,10 @@ public class Principal {
                 Semantico semanticoVisitor = new Semantico();
 
                 semanticoVisitor.visitPrograma(arvore);
+
+                try(PrintWriter pw = new PrintWriter(args[1])){
+                    SemanticoUtils.errosSemanticos.forEach(it -> pw.print(it));
+                }
 
             }
         }

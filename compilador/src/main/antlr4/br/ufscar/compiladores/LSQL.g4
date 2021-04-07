@@ -63,7 +63,7 @@ cmd: cmd_mostra | cmd_cria;
 
 cmd_cria: CRIA identificador ABRE_COLCHETE declaracao_var (VIRGULA declaracao_var)* FECHA_COLCHETE;
 
-identificador: IDENT;
+identificador: IDENT (PONTO IDENT)*;
 
 declaracao_var: identificador SETA tipos_basicos;
 
@@ -83,14 +83,17 @@ expressao_relacional: expressao_aritmetica (op_relacional expressao_aritmetica);
 
 op_relacional: OP_IGUAL | OP_DIFERENTE | OP_MAIOR_IGUAL | OP_MENOR_IGUAL | OP_MAIOR | OP_MENOR;
 
-expressao_aritmetica: termo (op1 termo)*;
-
-termo: fator (op2 fator)*;
-
-fator: NUM_INT | NUM_REAL | parcela_nao_numerica;
+expressao_aritmetica: NUM_INT | NUM_REAL | parcela_nao_numerica;
 
 parcela_nao_numerica: identificador | CADEIA;
 
-op1: OP_MAIS | OP_MENOS;
+//expressao_aritmetica: termo (op1 termo)*;
+//
+//termo: fator (op2 fator)*;
+//
+//fator: NUM_INT | NUM_REAL | parcela_nao_numerica;
+//
+//op1: OP_MAIS | OP_MENOS;
+//
+//op2: OP_MULT | OP_DIV;
 
-op2: OP_MULT | OP_DIV;

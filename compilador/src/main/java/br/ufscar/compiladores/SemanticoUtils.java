@@ -13,10 +13,6 @@ public class SemanticoUtils {
 
         var variavel = entradaTabelaDeSimbolos.nome;
 
-        if (entradaTabelaDeSimbolos.ponteiro){
-            variavel = "^" + variavel;
-        }
-
         if (getErrosSemanticos().contains(variavel)){
             return;
         }
@@ -25,20 +21,7 @@ public class SemanticoUtils {
 
         erroSemantico.append("Linha ").append(linha).append(": ");
 
-        switch (tipoErro){
-            case IDENTIFICADOR_EXISTENTE:
-                erroSemantico.append("identificador " + variavel + " ja declarado anteriormente\n");
-                break;
-            case ATRIBUICAO_INCOMPATIVEL:
-                erroSemantico.append("atribuicao nao compativel para " + variavel + "\n");
-                break;
-            case PARAMETROS_INCOMPATIVEIS:
-                erroSemantico.append("incompatibilidade de parametros na chamada de " + variavel + "\n");
-                break;
-            case ESCOPO_INVALIDO:
-                erroSemantico.append("comando retorne nao permitido nesse escopo\n");
-                break;
-        }
+        erroSemantico.append(switchErrorMsg(tipoErro, variavel));
 
         errosSemanticos.add(erroSemantico.toString());
     }
@@ -53,26 +36,31 @@ public class SemanticoUtils {
 
         erroSemantico.append("Linha ").append(linha).append(": ");
 
-        switch (tipoErro) {
-            case IDENTIFICADOR_INEXISTENTE:
-                erroSemantico.append("identificador " + variavel + " nao declarado\n");
-                break;
-            case TIPO_INEXISTENTE:
-                erroSemantico.append("tipo " + variavel + " nao declarado\n");
-                break;
-            case ATRIBUICAO_INCOMPATIVEL:
-                erroSemantico.append("atribuicao nao compativel para " + variavel + "\n");
-                break;
-        }
+        erroSemantico.append(switchErrorMsg(tipoErro, variavel));
 
         errosSemanticos.add(erroSemantico.toString());
     }
 
-    public static Tipos verificarTipo(String tipo){
-
-        if (tipo.contains("^")){
-            tipo = tipo.replace("^", "");
+    private static String switchErrorMsg(ErrosSemanticos tipoErro, String variavel){
+        switch (tipoErro){
+            case IDENTIFICADOR_EXISTENTE:
+                return "identificador " + variavel + " ja declarado anteriormente\n";
+            case ATRIBUICAO_INCOMPATIVEL:
+                return "atribuicao nao compativel para " + variavel + "\n";
+            case PARAMETROS_INCOMPATIVEIS:
+                return "incompatibilidade de parametros na chamada de " + variavel + "\n";
+            case ESCOPO_INVALIDO:
+                return "comando retorne nao permitido nesse escopo\n";
+            case IDENTIFICADOR_INEXISTENTE:
+                return "identificador " + variavel + " nao declarado\n";
+            case TIPO_INEXISTENTE:
+                return "tipo " + variavel + " nao declarado\n";
+            default:
+                return "";
         }
+    }
+
+    public static Tipos verificarTipo(String tipo){
 
         switch (tipo){
             case "inteiro":
@@ -87,6 +75,19 @@ public class SemanticoUtils {
                 return null;
         }
 
+    }
+
+    public static boolean comparaTipo(Tipos tipo1, Tipos tipo2){
+
+        if (tipo1.equals(tipo2))
+            return true;
+        else if(tipo1.equals(Tipos.VARCHAR) || tipo1.equals(Tipos.TEXTO)){
+            if (tipo2.equals(Tipos.VARCHAR) || tipo2.equals(Tipos.TEXTO)){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static void exibeErrosSemanticos() {

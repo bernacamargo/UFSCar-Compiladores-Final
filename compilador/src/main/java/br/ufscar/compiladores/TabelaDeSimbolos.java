@@ -60,6 +60,17 @@ public class TabelaDeSimbolos {
         });
     }
 
+    public boolean existeIdentificadorTabela(String identificador){
+
+        for (EntradaTabelaDeSimbolos value : tabelaDeSimbolos.values()) {
+            if (value.nome.contains(identificador)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     // Imprime a tabela (utilizado para debug)
     @Override
