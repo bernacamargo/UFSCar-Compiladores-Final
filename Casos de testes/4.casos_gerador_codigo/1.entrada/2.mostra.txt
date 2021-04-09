@@ -1,0 +1,12 @@
+{ Cria tabela de funcionario }
+
+inicio
+    cria Funcionario [
+        nome        -> varchar,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> texto
+    ]
+    
+    mostra todos Funcinario onde idade > 1
+fim

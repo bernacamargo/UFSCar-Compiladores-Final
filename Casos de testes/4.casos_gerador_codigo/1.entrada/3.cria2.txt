@@ -1,0 +1,20 @@
+{ Cria tabela de funcionario }
+
+inicio
+    cria Funcionario [
+        nome        -> varchar,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> texto
+    ]
+
+ cria Aluno [
+        nome        -> varcha,
+        ra          -> inteiro,
+        curso         -> varchar,
+    ]
+
+	mostra todos Alunos onde idade > 17 e nome = "joao"
+	mostra todos Funcinario onde nome = "paulo"
+
+fim

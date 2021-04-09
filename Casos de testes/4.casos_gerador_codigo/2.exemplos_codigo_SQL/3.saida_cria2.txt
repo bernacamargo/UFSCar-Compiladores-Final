@@ -1,0 +1,20 @@
+CREATE TABLE Funcionario {
+    nome VARCHAR(255),
+    idade INT,
+    cpf INT,
+    profissao TEXT
+}
+
+CREATE TABLE Aluno {
+    nome VARCHAR(255),
+    idade INT,
+    ra INT,
+    curso VARCHAR(255)
+}
+
+SELECT * FROM Aluno
+   WHERE id
+   AND nome = "joao"
+
+SELECT * FROM Funcionarios
+   WHERE nome = "paulo"

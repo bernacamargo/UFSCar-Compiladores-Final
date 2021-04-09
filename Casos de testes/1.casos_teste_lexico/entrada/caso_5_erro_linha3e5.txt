@@ -1,0 +1,7 @@
+% Mostra resultado da tabela % 
+
+inico 
+
+Apag Funcionarios onde nome='Renata'
+
+fim
