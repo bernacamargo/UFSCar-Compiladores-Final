@@ -3,7 +3,7 @@ CREATE TABLE Funcionario {
     idade INT,
     cpf INT,
     profissao TEXT
-}
+};
 
 SELECT * FROM Funcionarios
-   WHERE idade > 1
+   WHERE idade > 1;

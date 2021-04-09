@@ -3,18 +3,18 @@ CREATE TABLE Funcionario {
     idade INT,
     cpf INT,
     profissao TEXT
-}
+};
 
 CREATE TABLE Aluno {
     nome VARCHAR(255),
     idade INT,
     ra INT,
     curso VARCHAR(255)
-}
+};
 
 SELECT * FROM Aluno
    WHERE id AND 
-   nome = "joao"
+   nome = "joao";
 
 SELECT * FROM Funcionarios
-   WHERE nome = "paulo"
+   WHERE nome = "paulo";

@@ -3,4 +3,4 @@ CREATE TABLE Funcionario {
     idade INT,
     cpf INT,
     profissao TEXT
-}
+};

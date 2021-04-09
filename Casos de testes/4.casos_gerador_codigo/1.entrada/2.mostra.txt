@@ -8,5 +8,5 @@ inicio
         profissao   -> texto
     ]
     
-    mostra todos Funcinario onde idade > 1
+    mostra todos Funcionario onde idade > 1
 fim

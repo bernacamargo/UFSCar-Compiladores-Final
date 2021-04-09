@@ -11,10 +11,10 @@ inicio
  cria Aluno [
         nome        -> varcha,
         ra          -> inteiro,
-        curso         -> varchar,
+        curso       -> varchar
     ]
 
-	mostra todos Alunos onde idade > 17 e nome = "joao"
-	mostra todos Funcinario onde nome = "paulo"
+	mostra todos Aluno onde idade > 17 e nome = "joao"
+	mostra todos Funcionario onde nome = "paulo"
 
 fim
