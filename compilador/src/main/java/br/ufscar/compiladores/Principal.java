@@ -28,10 +28,22 @@ public class Principal {
 
                 semanticoVisitor.visitPrograma(arvore);
 
-                try(PrintWriter pw = new PrintWriter(args[1])){
-                    SemanticoUtils.errosSemanticos.forEach(it -> pw.print(it));
-                }
+                if (SemanticoUtils.errosSemanticos.isEmpty()){
+                    // Gerador de código
 
+                    GeradorDeCodigo geradorDeCodigo = new GeradorDeCodigo();
+                    geradorDeCodigo.visitPrograma(arvore);
+
+                    try(PrintWriter pw = new PrintWriter(args[1])){
+                        pw.print(geradorDeCodigo.saida.toString());
+                    }
+                }
+                else {
+                    try(PrintWriter pw = new PrintWriter(args[1])){
+                        SemanticoUtils.errosSemanticos.forEach(pw::print);
+                    }
+
+                }
             }
         }
         catch (IOException e){

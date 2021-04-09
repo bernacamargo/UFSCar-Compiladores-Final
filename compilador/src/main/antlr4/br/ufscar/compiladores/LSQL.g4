@@ -2,10 +2,6 @@ grammar LSQL;
 
 INICIO: 'inicio';
 FIM: 'fim';
-MOSTRA: 'mostra';
-CRIA: 'cria';
-ONDE: 'onde';
-TODOS: 'todos';
 DOIS_PONTOS: ':';
 OP_MAIS: '+';
 OP_MENOS: '-';
@@ -39,6 +35,17 @@ INTEIRO: 'inteiro';
 REAL: 'real';
 LOGICO: 'logico';
 
+//sql
+MOSTRA: 'mostra';
+CRIA: 'cria';
+ATUALIZA: 'atualiza';
+APAGA: 'apaga';
+INSERE: 'insere';
+TODOS: 'todos';
+ONDE: 'onde';
+PARA: 'para';
+
+
 IDENT: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*;
 
 COMENTARIO: '{' ~('\n' | '\r' | '}')* '}' -> skip;
@@ -59,17 +66,23 @@ programa: INICIO corpo FIM EOF;
 
 corpo: cmd*;
 
-cmd: cmd_mostra | cmd_cria;
+cmd: cmd_mostra | cmd_cria | cmd_insere | cmd_atualiza | cmd_apaga;
 
 cmd_cria: CRIA identificador ABRE_COLCHETE declaracao_var (VIRGULA declaracao_var)* FECHA_COLCHETE;
+
+cmd_mostra: MOSTRA colunas identificador ONDE expressao;
+
+cmd_insere: INSERE identificador ABRE_COLCHETE? expressao_relacional (VIRGULA expressao_relacional)* FECHA_COLCHETE?;
+
+cmd_atualiza: ATUALIZA identificador ONDE expressao PARA expressao_relacional (VIRGULA expressao_relacional)*;
+
+cmd_apaga: APAGA identificador ONDE expressao;
 
 identificador: IDENT (PONTO IDENT)*;
 
 declaracao_var: identificador SETA tipos_basicos;
 
 tipos_basicos: TEXTO | INTEIRO | REAL | VARCHAR;
-
-cmd_mostra: MOSTRA colunas identificador ONDE expressao;
 
 expressao: termo_logico (OP_OU termo_logico)*;
 
