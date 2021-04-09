@@ -13,8 +13,8 @@ CREATE TABLE Aluno {
 }
 
 SELECT * FROM Aluno
-   WHERE id
-   AND nome = "joao"
+   WHERE id AND 
+   nome = "joao"
 
 SELECT * FROM Funcionarios
    WHERE nome = "paulo"
