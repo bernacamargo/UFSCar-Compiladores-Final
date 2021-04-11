@@ -1,5 +1,3 @@
-{ Cria tabela de funcionario }
-
 inicio
     cria Funcionario [
         nome        -> varchar,

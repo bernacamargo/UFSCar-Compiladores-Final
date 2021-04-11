@@ -1,0 +1,25 @@
+inicio
+    cria Funcionario [
+        nome        -> varchar,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> texto
+    ]
+
+ cria Aluno [
+        nome        -> varcha,
+        ra          -> inteiro,
+        curso       -> varchar
+    ]
+
+    insere Funcionario nome="Bernardo", cpf=43765478987, idade=41, profissao="Mecânico"
+    insere Funcionario nome="Junir", cpf=67812345985, idade=28, profissao="Astronauta"
+    insere Funcionario nome="Jose Pedro", cpf=7891875232, idade=34, profissao="Advogado "
+
+	atualiza Funcionario onde nome="Bernardo" e cpf=43765478987 para nome="Beto", profissao="Engenheiro Mecanico"
+
+    atualiza Aluno onde nome="Paulo" e cpf=45678965412 para curso="Economia"
+
+    mostra todos Funcionario onde idade > 17 e idade < 35
+
+fim
