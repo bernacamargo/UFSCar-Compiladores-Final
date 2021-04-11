@@ -1,2 +1,2 @@
-Linha 14: erro sintatico proximo ao "berna" =
+Linha 12: erro sintatico proximo a onde
 Fim da compilacao

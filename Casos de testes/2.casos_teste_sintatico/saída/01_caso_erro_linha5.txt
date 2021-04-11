@@ -1,2 +1,2 @@
-Linha 5: erro sintatico proximo a Aluno
+Linha 6: erro sintatico proximo a nome
 Fim da compilacao

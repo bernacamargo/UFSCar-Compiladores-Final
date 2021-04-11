@@ -2,6 +2,6 @@
 
 inicio 
 
-Mostra todos Alunos oonde nome='julio'
+mostra todos Alunos oonde nome='julio'
 
 fim
