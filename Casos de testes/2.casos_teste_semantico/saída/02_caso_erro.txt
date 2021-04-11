@@ -1,2 +1,0 @@
-Linha 6: identificador idade ja declarado anteriormente
-Fim da compilacao

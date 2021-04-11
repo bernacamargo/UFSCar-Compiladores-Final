@@ -1,2 +1,0 @@
-Linha 10: identificador Aluno.idade nao declarado
-Fim da compilacao
