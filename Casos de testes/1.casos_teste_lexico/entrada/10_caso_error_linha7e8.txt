@@ -1,0 +1,11 @@
+inicio
+    cria Funcionario [
+        nome        -> varchar,	
+        cpf         -> varchar
+    ]
+
+    insere no Funcionario nome="paulo", cpf = 123	
+    paga Funcionario ode nome="paulo"
+
+ 
+fim

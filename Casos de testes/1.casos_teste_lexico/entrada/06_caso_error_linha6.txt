@@ -1,0 +1,11 @@
+inicio
+    cria Funcionario {
+        nome        -> varchar,
+        idade       -> inteiro;
+        cpf         -> inteiro,
+        profissao   -> texto
+    }
+
+inseri Funcionario nome="berna", cpf = 123
+
+fim
