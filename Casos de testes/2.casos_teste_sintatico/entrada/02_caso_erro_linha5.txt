@@ -1,4 +1,4 @@
-% Cria tabela de Aluno % 
+{ Cria tabela de Aluno}
 
 inicio 
 

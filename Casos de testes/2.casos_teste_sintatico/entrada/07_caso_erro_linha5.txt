@@ -1,9 +1,9 @@
-{Cria tabela de Aluno}
+{Cria tabela de Pais }
 
 inicio 
 
-cria Aluno
-nome -> texto,
+cria Aluno [
+nome texto,
 idade -> inteiro, 
 RA -> inteiro ]
 

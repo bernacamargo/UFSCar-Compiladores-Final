@@ -1,0 +1,7 @@
+{Mostra de Pais }
+
+inicio 
+
+atualiza 
+
+fim

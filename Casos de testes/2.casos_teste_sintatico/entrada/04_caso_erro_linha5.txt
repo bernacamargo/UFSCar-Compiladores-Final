@@ -1,7 +1,7 @@
-{Cria tabela de Aluno }
+{Mostra de Aluno }
 
 inicio 
 
-Mostra todos Alunos oonde
+Mostra todos Alunos oonde nome='julio'
 
 fim
