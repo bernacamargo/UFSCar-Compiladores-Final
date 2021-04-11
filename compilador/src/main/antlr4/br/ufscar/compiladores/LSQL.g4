@@ -2,12 +2,10 @@ grammar LSQL;
 
 INICIO: 'inicio';
 FIM: 'fim';
-DOIS_PONTOS: ':';
 OP_MAIS: '+';
 OP_MENOS: '-';
 OP_MULT: '*';
 OP_DIV: '/';
-OP_PORCENTAGEM: '%';
 OP_MAIOR: '>';
 OP_MENOR: '<';
 OP_MAIOR_IGUAL: '>=';
@@ -18,7 +16,6 @@ ABRE_PARENTESE: '(';
 FECHA_PARENTESE: ')';
 VIRGULA: ',';
 PONTO: '.';
-PONTO_E_VIRGULA: ';';
 ABRE_COLCHETE: '[';
 FECHA_COLCHETE: ']';
 SETA: '->';
@@ -70,19 +67,19 @@ cmd: cmd_mostra | cmd_cria | cmd_insere | cmd_atualiza | cmd_apaga;
 
 cmd_cria: CRIA identificador ABRE_COLCHETE declaracao_var (VIRGULA declaracao_var)* FECHA_COLCHETE;
 
-cmd_mostra: MOSTRA colunas identificador ONDE expressao;
+cmd_mostra: MOSTRA colunas identificador (ONDE expressao)?;
 
 cmd_insere: INSERE identificador ABRE_COLCHETE? expressao_relacional (VIRGULA expressao_relacional)* FECHA_COLCHETE?;
 
-cmd_atualiza: ATUALIZA identificador ONDE expressao PARA expressao_relacional (VIRGULA expressao_relacional)*;
+cmd_atualiza: ATUALIZA identificador (ONDE expressao)? PARA expressao_relacional (VIRGULA expressao_relacional)*;
 
-cmd_apaga: APAGA identificador ONDE expressao;
+cmd_apaga: APAGA identificador (ONDE expressao)?;
 
 identificador: IDENT (PONTO IDENT)*;
 
 declaracao_var: identificador SETA tipos_basicos;
 
-tipos_basicos: TEXTO | INTEIRO | REAL | VARCHAR;
+tipos_basicos: TEXTO | INTEIRO | REAL | VARCHAR | identificador;
 
 expressao: termo_logico (OP_OU termo_logico)*;
 

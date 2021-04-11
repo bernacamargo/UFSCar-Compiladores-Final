@@ -30,7 +30,12 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         var identificadorTabela = ctx.identificador().getText();
 
-        ctx.declaracao_var().forEach(it -> visitaDeclaracao_var(it, identificadorTabela));
+        if (!tabelaDeSimbolos.existeIdentificadorTabela(identificadorTabela)){
+            ctx.declaracao_var().forEach(it -> visitaDeclaracao_var(it, identificadorTabela));
+        }
+        else{
+            SemanticoUtils.adicionaErroSemantico(identificadorTabela, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_EXISTENTE);
+        }
 
         return null;
     }
@@ -63,13 +68,70 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         if (tabelaDeSimbolos.existeIdentificadorTabela(ident)){
             visitaColunas(ctx.colunas(), ident);
-            visitaExpressao(ctx.expressao(), ident);
+            if (ctx.ONDE() != null){
+                visitaExpressao(ctx.expressao(), ident);
+            }
         }
         else {
             SemanticoUtils.adicionaErroSemantico(ident, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
         }
 
+        return null;
+    }
 
+    @Override
+    public Void visitCmd_insere(LSQLParser.Cmd_insereContext ctx) {
+        var ident = ctx.identificador().getText();
+
+        if (tabelaDeSimbolos.existeIdentificadorTabela(ident)){
+            for (int i = 0; i < ctx.expressao_relacional().size(); i++) {
+                var expRelacional = ctx.expressao_relacional(i);
+                visitaExpressao_relacional(expRelacional, ident);
+            }
+        }
+        else {
+            SemanticoUtils.adicionaErroSemantico(ident, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitCmd_atualiza(LSQLParser.Cmd_atualizaContext ctx) {
+
+        var ident = ctx.identificador().getText();
+
+        if (tabelaDeSimbolos.existeIdentificadorTabela(ident)){
+            if (ctx.ONDE() != null){
+                visitaExpressao(ctx.expressao(), ident);
+            }
+
+            for (int i = 0; i < ctx.expressao_relacional().size(); i++) {
+                var expRelacional = ctx.expressao_relacional(i);
+                visitaExpressao_relacional(expRelacional, ident);
+
+            }
+        }
+        else {
+            SemanticoUtils.adicionaErroSemantico(ident, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Void visitCmd_apaga(LSQLParser.Cmd_apagaContext ctx) {
+
+        var ident = ctx.identificador().getText();
+
+        if(tabelaDeSimbolos.existeIdentificadorTabela(ident)){
+            if (ctx.ONDE() != null){
+                visitaExpressao(ctx.expressao(), ident);
+            }
+        }
+        else {
+            SemanticoUtils.adicionaErroSemantico(ident, ctx.start.getLine(), ErrosSemanticos.IDENTIFICADOR_INEXISTENTE);
+        }
 
         return null;
     }

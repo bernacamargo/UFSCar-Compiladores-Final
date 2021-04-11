@@ -25,12 +25,10 @@ public class Principal {
             if (CharStreams.fromFileName(args[1]).size() == 0){
                 // Analisador Semantico
                 Semantico semanticoVisitor = new Semantico();
-
                 semanticoVisitor.visitPrograma(arvore);
 
                 if (SemanticoUtils.errosSemanticos.isEmpty()){
                     // Gerador de código
-
                     GeradorDeCodigo geradorDeCodigo = new GeradorDeCodigo();
                     geradorDeCodigo.visitPrograma(arvore);
 
@@ -42,7 +40,6 @@ public class Principal {
                     try(PrintWriter pw = new PrintWriter(args[1])){
                         SemanticoUtils.errosSemanticos.forEach(pw::print);
                     }
-
                 }
             }
         }

@@ -47,10 +47,6 @@ public class SemanticoUtils {
                 return "identificador " + variavel + " ja declarado anteriormente\n";
             case ATRIBUICAO_INCOMPATIVEL:
                 return "atribuicao nao compativel para " + variavel + "\n";
-            case PARAMETROS_INCOMPATIVEIS:
-                return "incompatibilidade de parametros na chamada de " + variavel + "\n";
-            case ESCOPO_INVALIDO:
-                return "comando retorne nao permitido nesse escopo\n";
             case IDENTIFICADOR_INEXISTENTE:
                 return "identificador " + variavel + " nao declarado\n";
             case TIPO_INEXISTENTE:

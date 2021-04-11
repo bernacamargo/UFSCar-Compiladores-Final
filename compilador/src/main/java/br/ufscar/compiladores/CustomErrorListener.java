@@ -28,7 +28,7 @@ public class CustomErrorListener implements ANTLRErrorListener {
         String ident = token.getText();
         StringBuilder saida = new StringBuilder();
 
-        if (token.getType() == 41){
+        if (token.getType() == 48){
             saida.append(ident)
                     .append(" - simbolo nao identificado\n");
         }

@@ -85,9 +85,11 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
 
         saida.append("SELECT ");
         visitColunas(ctx.colunas());
-        saida.append(" FROM ").append(ident).append("\n");
-        saida.append("\tWHERE ");
-        visitExpressao(ctx.expressao());
+        saida.append(" FROM ").append(ident);
+        if (ctx.ONDE() != null) {
+            saida.append("\n\tWHERE ");
+            visitExpressao(ctx.expressao());
+        }
         saida.append(";\n\n");
         return null;
     }
@@ -120,6 +122,51 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
         saida.append("INSERT INTO ").append(ident);
 
         saida.append(expressaoParaFormatoInsere);
+
+        saida.append(";\n\n");
+
+        return null;
+    }
+
+    @Override
+    public Void visitCmd_atualiza(LSQLParser.Cmd_atualizaContext ctx) {
+
+        var ident = ctx.identificador().getText();
+
+        saida.append("UPDATE ").append(ident);
+        saida.append(" SET ");
+        var expressao_relacional = ctx.expressao_relacional();
+        for (int i = 0; i < expressao_relacional.size(); i++) {
+            var expRelacional = expressao_relacional.get(i);
+            visitExpressao_relacional(expRelacional);
+
+            if (i != expressao_relacional.size()-1){
+                saida.append(", ");
+            }
+        }
+
+        if (ctx.ONDE() != null){
+            saida.append("\n\tWHERE ");
+            visitExpressao(ctx.expressao());
+        }
+
+        saida.append(";\n\n");
+
+        return null;
+    }
+
+    @Override
+    public Void visitCmd_apaga(LSQLParser.Cmd_apagaContext ctx) {
+
+        var ident = ctx.identificador().getText();
+        var expressao = ctx.expressao();
+
+        saida.append("DELETE FROM ").append(ident);
+
+        if (ctx.ONDE() != null){
+            saida.append(" WHERE ");
+            visitExpressao(expressao);
+        }
 
         saida.append(";\n\n");
 
