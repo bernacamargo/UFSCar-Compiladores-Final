@@ -6,6 +6,6 @@ inicio
         profissao   -> texto
     }
 
-inseri Funcionario nome="berna", cpf = 123
+insere Funcionario nome="berna", cpf = 123
 
 fim

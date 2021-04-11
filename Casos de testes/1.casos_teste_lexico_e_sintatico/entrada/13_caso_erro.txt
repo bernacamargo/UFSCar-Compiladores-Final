@@ -4,7 +4,7 @@ inicio
         cpf         -> varchar
     ]
 
-    insere no Funcionario nome="paulo", cpf = 123	
+    insere ~ Funcionario nome="paulo", cpf = 123	
     amostra todos Funcionario onde nome = "paulo"
  
 fim
