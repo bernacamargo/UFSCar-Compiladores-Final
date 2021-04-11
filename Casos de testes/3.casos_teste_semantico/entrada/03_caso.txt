@@ -2,7 +2,7 @@
 
 inicio
     cria Aluno [
-        nome        -> varcha,
+        nome        -> varchar,
         ra          -> inteiro,
         curso         -> varchar,
     ]
