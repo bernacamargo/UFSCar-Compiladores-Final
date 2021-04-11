@@ -1,0 +1,17 @@
+CREATE TABLE Funcionario {
+    nome VARCHAR(255),
+    idade INT,
+    cpf INT,
+    profissao TEXT
+};
+
+CREATE TABLE Aluno {
+    nome VARCHAR(255),
+    idade INT,
+    ra INT,
+    curso VARCHAR(255)
+};
+
+DELETE FROM Funcionario WHERE nome = "Pedro";
+
+DELETE FROM Aluno WHERE nome = "Paulo";

@@ -12,7 +12,7 @@ inicio
         curso       -> varchar
     ]
 
-	mostra todos Aluno onde idade > 17 e nome = "joao"
-	mostra todos Funcionario onde nome = "paulo"
+	insere Funcionario nome="berna", cpf = 123
+    insere Aluno nome="Paulo", cpf = 1234
 
 fim

@@ -12,7 +12,7 @@ inicio
         curso       -> varchar
     ]
 
-	mostra todos Aluno onde idade > 17 e nome = "joao"
-	mostra todos Funcionario onde nome = "paulo"
+	apaga Funcionario onde nome="Pedro"
+    apaga Aluno onde nome="Paulo"
 
 fim

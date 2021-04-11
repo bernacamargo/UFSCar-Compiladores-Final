@@ -1,0 +1,12 @@
+{ Cria tabela de funcionario }
+
+inicio
+    cria Aluno [
+        nome        -> varchar,
+        ra          -> inteiro,
+        curso         -> varchar,
+    ]
+
+    Mostra todos Alunos onde idade>17
+    
+fim

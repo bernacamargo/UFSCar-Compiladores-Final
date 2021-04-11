@@ -12,7 +12,7 @@ inicio
         curso       -> varchar
     ]
 
-	mostra todos Aluno onde idade > 17 e nome = "joao"
-	mostra todos Funcionario onde nome = "paulo"
+	atualiza Funcionario onde nome="berna" e cpf=123 para nome="Bernardo", cpf = 12312
+    atualiza Aluno onde nome="Joao" e cpf=587 para nome="Henrique", cpf = 551123
 
 fim
