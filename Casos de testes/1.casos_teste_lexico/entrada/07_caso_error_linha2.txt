@@ -1,7 +1,5 @@
-{ Cria tabela de funcionario }
-
 inicio
-    cria Funcionario [
+    crias Funcionario [
         nome        -> varchar,
         idade       -> inteiro,
         cpf         -> inteiro,
