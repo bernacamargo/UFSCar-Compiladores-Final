@@ -1,6 +1,4 @@
-{ Cria tabela de Aluno } 
-
-
+{ Mostra tabela de Aluno } 
 
 Mostra todos Alunos
 

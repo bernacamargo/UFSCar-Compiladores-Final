@@ -2,10 +2,11 @@
 
 inicio
     cria Funcionario [
-        nome        -> varcha,
+        nome        -> varchar,
         idade       -> inteiro,
         cpf         -> inteiro,
-        profissao   -> 
+        profissao   -> varcha
     ]
     
+  
 fim

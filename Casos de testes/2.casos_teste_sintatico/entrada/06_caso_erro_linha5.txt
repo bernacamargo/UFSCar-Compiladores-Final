@@ -1,0 +1,9 @@
+{Mostra de Pais }
+
+inicio 
+
+atualiza Pais onde nome="Fernanda Praisler"  ra=123456 para nome="Fernanda Silva"
+
+
+
+fim

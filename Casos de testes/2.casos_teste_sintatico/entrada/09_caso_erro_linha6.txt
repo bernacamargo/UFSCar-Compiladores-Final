@@ -1,0 +1,8 @@
+{Mostra de Funcionario }
+
+inicio 
+
+
+atualiza Funcionario onde nome="berna" cpf=123 para nome="berna"
+
+fim
