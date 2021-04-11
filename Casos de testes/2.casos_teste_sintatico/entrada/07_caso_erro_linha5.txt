@@ -2,7 +2,7 @@
 
 inicio 
 
-cria Aluno [
+cria Pais [
 nome texto,
 idade -> inteiro, 
 RA -> inteiro ]

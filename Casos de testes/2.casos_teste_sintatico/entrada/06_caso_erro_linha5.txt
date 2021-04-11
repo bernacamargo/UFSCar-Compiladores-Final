@@ -2,6 +2,8 @@
 
 inicio 
 
-atualiza 
+atualiza Pais onde nome="Fernanda Praisler"  ra=123456 para nome="Fernanda Silva"
+
+
 
 fim
