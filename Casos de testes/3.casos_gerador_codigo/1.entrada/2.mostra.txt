@@ -1,0 +1,10 @@
+inicio
+    cria Funcionario [
+        nome        -> varchar,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> texto
+    ]
+    
+    mostra todos Funcionario onde idade > 1
+fim

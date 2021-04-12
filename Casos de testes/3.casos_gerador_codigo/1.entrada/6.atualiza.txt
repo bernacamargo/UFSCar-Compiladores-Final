@@ -1,0 +1,18 @@
+inicio
+    cria Funcionario [
+        nome        -> varchar,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> texto
+    ]
+
+ cria Aluno [
+        nome        -> varcha,
+        ra          -> inteiro,
+        curso       -> varchar
+    ]
+
+	atualiza Funcionario onde nome="berna" e cpf=123 para nome="Bernardo", cpf = 12312
+    atualiza Aluno onde nome="Joao" e cpf=587 para nome="Henrique", cpf = 551123
+
+fim

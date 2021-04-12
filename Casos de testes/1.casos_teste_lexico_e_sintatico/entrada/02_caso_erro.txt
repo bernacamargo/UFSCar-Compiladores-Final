@@ -1,0 +1,10 @@
+{ Cria tabela de Aluno}
+
+inicio 
+
+cria Aluno [ 
+ -> texto,
+idade -> inteiro, 
+RA -> inteiro ]
+
+fim

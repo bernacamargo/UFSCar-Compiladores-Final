@@ -1,7 +1,0 @@
-{Cria tabela de Aluno }
-
-inicio 
-
-Mostra todos Alunos oonde
-
-fim

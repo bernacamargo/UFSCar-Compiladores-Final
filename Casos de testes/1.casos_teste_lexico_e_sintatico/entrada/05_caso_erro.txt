@@ -1,0 +1,10 @@
+{Cria tabela de Professor}
+
+inicio 
+
+cria Professor[
+nome --> texto,
+departamento -> texto,
+n_ufscar -> inteiro ]
+
+fim

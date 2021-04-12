@@ -1,0 +1,10 @@
+{Cria tabela de Pais }
+
+inicio 
+
+cria Pais [
+nome texto,
+idade -> inteiro, 
+RA -> inteiro ]
+
+fim

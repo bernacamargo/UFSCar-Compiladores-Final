@@ -1,0 +1,7 @@
+{ Mostra resultado da tabela }
+
+inicio 
+
+Mostra todos @ Funcionarios onde nome='Renata'
+
+fim

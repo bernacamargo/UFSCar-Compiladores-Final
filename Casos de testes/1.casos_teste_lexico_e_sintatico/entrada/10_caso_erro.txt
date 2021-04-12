@@ -1,0 +1,17 @@
+{Mostra de Aluno }
+
+inicio 
+
+cria Aluno[
+nome -> texto,
+idade -> inteiro, 
+RA -> inteiro ]
+
+insere Aluno nome="João Vitor", idade=16, ra=894563
+insere Aluno nome="Gustavo Silva", idade=19, ra=741258
+atualiza Aluno onde nome="Gustavo" onde RA=746044
+
+apaga Aluno onde ra=
+
+fim
+

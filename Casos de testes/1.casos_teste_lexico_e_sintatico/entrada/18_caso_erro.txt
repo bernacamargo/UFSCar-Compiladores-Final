@@ -1,0 +1,10 @@
+inicio
+    cria Funcionario [
+        nome        -> varchar,	
+        cpf         -> varchar
+    ]
+
+    insere no Funcionario nome="berna", cpf = 123	
+    atualizo Funcionario onde nome="berna" e cpf=123 para nome="bernardo", cpf = 123125
+ 
+fim

@@ -25,13 +25,22 @@ public class Principal {
             if (CharStreams.fromFileName(args[1]).size() == 0){
                 // Analisador Semantico
                 Semantico semanticoVisitor = new Semantico();
-
                 semanticoVisitor.visitPrograma(arvore);
 
-                try(PrintWriter pw = new PrintWriter(args[1])){
-                    SemanticoUtils.errosSemanticos.forEach(it -> pw.print(it));
-                }
+                if (SemanticoUtils.errosSemanticos.isEmpty()){
+                    // Gerador de código
+                    GeradorDeCodigo geradorDeCodigo = new GeradorDeCodigo();
+                    geradorDeCodigo.visitPrograma(arvore);
 
+                    try(PrintWriter pw = new PrintWriter(args[1])){
+                        pw.print(geradorDeCodigo.saida.toString());
+                    }
+                }
+                else {
+                    try(PrintWriter pw = new PrintWriter(args[1])){
+                        SemanticoUtils.errosSemanticos.forEach(pw::print);
+                    }
+                }
             }
         }
         catch (IOException e){

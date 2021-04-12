@@ -1,2 +1,0 @@
-Linha 8: tipo profissao nao declarado
-Fim da compilacao

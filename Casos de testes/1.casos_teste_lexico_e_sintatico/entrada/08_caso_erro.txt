@@ -1,0 +1,7 @@
+{Mostra de Funcionario }
+
+inicio 
+
+insere Funcionario nome="Fabio",
+
+fim

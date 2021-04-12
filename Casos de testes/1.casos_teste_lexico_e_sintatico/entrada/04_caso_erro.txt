@@ -1,0 +1,7 @@
+{Mostra de Aluno }
+
+inicio 
+
+mostra todos Alunos oonde nome='julio'
+
+fim

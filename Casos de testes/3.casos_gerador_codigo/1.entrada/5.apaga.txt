@@ -1,0 +1,18 @@
+inicio
+    cria Funcionario [
+        nome        -> varchar,
+        idade       -> inteiro,
+        cpf         -> inteiro,
+        profissao   -> texto
+    ]
+
+ cria Aluno [
+        nome        -> varcha,
+        ra          -> inteiro,
+        curso       -> varchar
+    ]
+
+	apaga Funcionario onde nome="Pedro"
+    apaga Aluno onde nome="Paulo"
+
+fim

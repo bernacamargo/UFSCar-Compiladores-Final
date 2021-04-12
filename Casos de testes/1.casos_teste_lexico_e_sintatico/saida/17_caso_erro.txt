@@ -1,0 +1,2 @@
+Linha 2: crias simbolo nao identificado
+Fim da compilação

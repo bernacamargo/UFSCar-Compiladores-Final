@@ -1,7 +1,0 @@
-<'inicio','inicio'>
-<'Mostra Todos','Mostra Todos'>
-<'onde', 'onde'>
-<'nome', IDENT>
-<'=','='>
-<'Renata', IDENT>
-<'fim','fim'>

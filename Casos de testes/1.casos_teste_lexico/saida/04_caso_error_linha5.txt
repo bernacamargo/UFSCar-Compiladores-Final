@@ -1,4 +1,0 @@
-<'inicio','inicio'>
-<'Mostra Todos','Mostra Todos'>
-<'#','#'>
-Linha 5: # simbolo nao identificado
