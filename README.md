@@ -24,7 +24,7 @@ O objetivo desta etapa é elaborar uma linguagem simples e desenvolver o compila
 ## Como utilizar
 
 1. É necessário ter o Java 11 instalado
-2. Utilize o arquivo executável gerado na compilação ou faça o download do executável [compilador.jar](https://github.com/bernacamargo/UFSCar-Compiladores-Final/raw/compilador.jar)
+2. Utilize o arquivo executável gerado na compilação ou faça o download do executável [compilador.jar](https://github.com/bernacamargo/UFSCar-Compiladores-Final/raw/main/compilador.jar)
 3. Agora basta executar o programa baixado através de um terminal. Para isso utilizaremos o comando `java -jar` juntamente com os seguintes parâmetros:
 
    - **ARG1:** O caminho absoluto para o arquivo baixado no passo anterior;
