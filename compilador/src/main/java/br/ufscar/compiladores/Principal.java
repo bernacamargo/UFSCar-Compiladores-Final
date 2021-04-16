@@ -39,6 +39,7 @@ public class Principal {
                 else {
                     try(PrintWriter pw = new PrintWriter(args[1])){
                         SemanticoUtils.errosSemanticos.forEach(pw::print);
+                        pw.print("Fim da compilacao\n");
                     }
                 }
             }
