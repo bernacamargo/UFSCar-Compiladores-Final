@@ -1,0 +1,2 @@
+Linha 10: identificador Funcionario.profissao nao declarado
+Fim da compilacao

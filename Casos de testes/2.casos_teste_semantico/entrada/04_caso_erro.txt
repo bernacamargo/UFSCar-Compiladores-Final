@@ -7,6 +7,4 @@ inicio
         cpf         -> inteiro,
         profissao   -> varcha
     ]
-    
-  
 fim

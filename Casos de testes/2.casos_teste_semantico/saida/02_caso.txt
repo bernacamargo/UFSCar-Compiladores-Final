@@ -1,2 +1,2 @@
-Linha 6: identificador idade ja declarado anteriormente
+Linha 7: identificador Funcionario.idade ja declarado anteriormente
 Fim da compilacao

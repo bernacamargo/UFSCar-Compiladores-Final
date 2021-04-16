@@ -7,12 +7,12 @@ inicio
     ]
 
  cria Aluno [
-        nome        -> varcha,
+        nome        -> varchar,
         ra          -> inteiro,
         curso       -> varchar
     ]
 
-	insere Funcionario nome="berna", cpf = 123
-    insere Aluno nome="Paulo", cpf = 1234
+	insere Funcionario nome="João", cpf = 12345678910
+    insere Aluno nome="Paulo", ra = 1234
 
 fim

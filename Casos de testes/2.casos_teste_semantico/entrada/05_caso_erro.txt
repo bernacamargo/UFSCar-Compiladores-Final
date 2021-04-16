@@ -2,10 +2,11 @@
 
 inicio
     cria Funcionario [
-        nome        -> varcha,
+        nome        -> varchar,
         idade       -> inteiro,
-        cpf         -> inteiro,
-        profissao   -> 
+        cpf         -> inteiro
     ]
-    
+
+    mostra profissao Funcionario onde idade > 22
+
 fim

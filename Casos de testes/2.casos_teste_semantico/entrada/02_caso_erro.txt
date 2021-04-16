@@ -4,9 +4,9 @@ inicio
     cria Funcionario [
         nome        -> varchar,
         idade       -> inteiro,
-        cpf         -> inteiro,
-        profissao   -> texto
+        idade       -> real,
+        cpf         -> inteiro
     ]
-    
-    mostra todos Funcinario onde nome = 1
+
+    mostra todos Funcionario onde nome = "fulano"
 fim

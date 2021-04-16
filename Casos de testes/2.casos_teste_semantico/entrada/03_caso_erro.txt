@@ -4,9 +4,9 @@ inicio
     cria Aluno [
         nome        -> varchar,
         ra          -> inteiro,
-        curso         -> varchar,
+        curso         -> varchar
     ]
 
-    Mostra todos Alunos onde idade>17
-    
+    mostra todos Aluno onde idade > 17
+
 fim

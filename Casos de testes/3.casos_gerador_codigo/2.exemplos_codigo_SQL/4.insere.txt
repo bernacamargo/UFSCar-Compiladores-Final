@@ -1,17 +1,17 @@
-CREATE TABLE Funcionario {
-    nome VARCHAR(255),
-    idade INT,
-    cpf INT,
-    profissao TEXT
-};
+CREATE TABLE Funcionario ( 
+	nome VARCHAR(255),
+	idade INT,
+	cpf INT,
+	profissao TEXT
+);
 
-CREATE TABLE Aluno {
-    nome VARCHAR(255),
-    idade INT,
-    ra INT,
-    curso VARCHAR(255)
-};
+CREATE TABLE Aluno ( 
+	nome VARCHAR(255),
+	ra INT,
+	curso VARCHAR(255)
+);
 
-INSERT INTO Funcionario (nome, cpf) VALUES ("berna", 123);
+INSERT INTO Funcionario (nome, cpf) VALUES ("João", 12345678910);
 
-INSERT INTO Aluno (nome, cpf) VALUES ("Paulo", 1234);
+INSERT INTO Aluno (nome, ra) VALUES ("Paulo", 1234);
+

@@ -1,31 +1,31 @@
-CREATE TABLE Funcionario {
-    nome VARCHAR(255),
-    idade INT,
-    cpf INT,
-    profissao TEXT
-};
+CREATE TABLE Funcionario ( 
+	nome VARCHAR(255),
+	idade INT,
+	cpf INT,
+	profissao TEXT
+);
 
-CREATE TABLE Aluno {
-    nome VARCHAR(255),
-    idade INT,
-    ra INT,
-    curso VARCHAR(255)
-};
+CREATE TABLE Aluno ( 
+	nome VARCHAR(255),
+	ra INT,
+	curso VARCHAR(255)
+);
 
 INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Bernardo", 43765478987, 41, "Mecânico");
 
 INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Junir", 67812345985, 28, "Astronauta");
 
-INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Jose Pedro", 7891875232, 34, "Advogado");
+INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Jose Pedro", 7891875232, 34, "Advogado ");
 
-UPDATE Funcionario SET profissao = "Delegado"
-	WHERE cpf = 43765478987
+UPDATE Funcionario SET nome = "Beto", profissao = "Engenheiro Mecanico"
+	WHERE nome = "Bernardo" AND
+	cpf = 43765478987;
 
-UPDATE Funcionario SET idade=36
-	WHERE cpf = 7891875232;
+UPDATE Aluno SET curso = "Economia"
+	WHERE nome = "Paulo" AND
+	ra = 757485;
 
 SELECT * FROM Funcionario
 	WHERE idade > 17 AND
 	idade < 35;
-
 

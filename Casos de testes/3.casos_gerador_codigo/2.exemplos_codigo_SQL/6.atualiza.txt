@@ -1,21 +1,21 @@
-CREATE TABLE Funcionario {
-    nome VARCHAR(255),
-    idade INT,
-    cpf INT,
-    profissao TEXT
-};
+CREATE TABLE Funcionario ( 
+	nome VARCHAR(255),
+	idade INT,
+	cpf INT,
+	profissao TEXT
+);
 
-CREATE TABLE Aluno {
-    nome VARCHAR(255),
-    idade INT,
-    ra INT,
-    curso VARCHAR(255)
-};
+CREATE TABLE Aluno ( 
+	nome VARCHAR(255),
+	ra INT,
+	curso VARCHAR(255)
+);
 
 UPDATE Funcionario SET nome = "Bernardo", cpf = 12312
 	WHERE nome = "berna" AND
 	cpf = 123;
 
-UPDATE Aluno SET nome = "Henrique", cpf = 551123
+UPDATE Aluno SET nome = "Henrique", ra = 551123
 	WHERE nome = "Joao" AND
-	cpf = 587;
+	ra = 587;
+

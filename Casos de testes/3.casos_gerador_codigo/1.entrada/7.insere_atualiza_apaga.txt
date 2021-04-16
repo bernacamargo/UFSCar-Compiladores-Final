@@ -7,18 +7,18 @@ inicio
     ]
 
  cria Aluno [
-        nome        -> varcha,
+        nome        -> varchar,
         ra          -> inteiro,
         curso       -> varchar
     ]
 
     insere Funcionario nome="Bernardo", cpf=43765478987, idade=41, profissao="Mecânico"
     insere Funcionario nome="Bernardo Junir", cpf=67812345985, idade=28, profissao="Astronauta"
-    insere Aluno nome="Paulo", cpf=45678965412, curso="Geografia"
+    insere Aluno nome="Paulo", ra=658514, curso="Geografia"
 
 	atualiza Funcionario onde nome="Bernardo" e cpf=43765478987 para nome="Beto", profissao="Engenheiro Mecanico"
 
-    atualiza Aluno onde nome="Paulo" e cpf=45678965412 para curso="Economia"
+    atualiza Aluno onde nome="Paulo" e ra=658514 para curso="Economia"
 
     apaga Funcionario onde cpf=67812345985
 

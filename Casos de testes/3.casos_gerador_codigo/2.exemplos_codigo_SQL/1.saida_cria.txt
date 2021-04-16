@@ -1,6 +1,7 @@
-CREATE TABLE Funcionario {
-    nome VARCHAR(255),
-    idade INT,
-    cpf INT,
-    profissao TEXT
-};
+CREATE TABLE Funcionario ( 
+	nome VARCHAR(255),
+	idade INT,
+	cpf INT,
+	profissao TEXT
+);
+

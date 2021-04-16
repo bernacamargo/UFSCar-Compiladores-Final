@@ -1,9 +1,10 @@
-CREATE TABLE Funcionario {
-    nome VARCHAR(255),
-    idade INT,
-    cpf INT,
-    profissao TEXT
-};
+CREATE TABLE Funcionario ( 
+	nome VARCHAR(255),
+	idade INT,
+	cpf INT,
+	profissao TEXT
+);
 
-SELECT * FROM Funcionarios
-   WHERE idade > 1;
+SELECT * FROM Funcionario
+	WHERE idade > 1;
+
