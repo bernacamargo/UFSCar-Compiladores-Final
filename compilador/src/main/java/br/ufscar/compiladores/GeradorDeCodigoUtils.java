@@ -2,7 +2,7 @@ package br.ufscar.compiladores;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//verifica o tipo da nossa gramatica com o tipo da linguaguem de SQL que estamos utilizando
 public class GeradorDeCodigoUtils {
 
     public static String verificaTipoVar(Tipos tipos){
@@ -29,7 +29,7 @@ public class GeradorDeCodigoUtils {
         return saida;
 
     }
-
+//verifica a estrutura da nossa operação 
     public static String expressaoParaFormatoInsere(List<LSQLParser.Expressao_relacionalContext> ctxLista){
 
         StringBuilder saida = new StringBuilder();
