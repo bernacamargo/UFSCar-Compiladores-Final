@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.BitSet;
-
+/// econtra o erro 
 public class CustomErrorListener implements ANTLRErrorListener {
     LSQLLexer lex;
     FileWriter fileWriter;
@@ -21,7 +21,7 @@ public class CustomErrorListener implements ANTLRErrorListener {
             e.printStackTrace();
         }
     }
-
+  // encontra o simbolo de sintaxe 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object t, int linha, int i1, String s, RecognitionException e) {
         Token token = (Token) t;
@@ -49,7 +49,7 @@ public class CustomErrorListener implements ANTLRErrorListener {
 
         escreveNoArquivo(saida, linha);
     }
-
+  // escreve o erro no arquivo, informando linha e o erro
     private void escreveNoArquivo(StringBuilder saida, int linha) {
         try {
             if (saida.length() > 0){
