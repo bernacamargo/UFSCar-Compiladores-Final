@@ -24,7 +24,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// visita a gramatica para cmd cria
     @Override
     public Void visitCmd_cria(LSQLParser.Cmd_criaContext ctx) {
 
@@ -39,7 +39,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// verifica a declaração da variavel em nível semantico
     public Void visitaDeclaracao_var(LSQLParser.Declaracao_varContext ctx, String identificadorTabela) {
 
         var ident = ctx.identificador().getText();
@@ -78,7 +78,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// verifica valor semantico do insere 
     @Override
     public Void visitCmd_insere(LSQLParser.Cmd_insereContext ctx) {
         var ident = ctx.identificador().getText();
@@ -95,7 +95,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// verifica valor semantico do atualiza
     @Override
     public Void visitCmd_atualiza(LSQLParser.Cmd_atualizaContext ctx) {
 
@@ -118,7 +118,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// verifica valor semantico do deletar/apagar 
     @Override
     public Void visitCmd_apaga(LSQLParser.Cmd_apagaContext ctx) {
 
@@ -135,7 +135,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// verifica valor semantico da variavel e declaração conforme as colunas
     private Void visitaColunas(LSQLParser.ColunasContext ctx, String identificadorTabela){
 
         if (ctx.TODOS() == null) {
@@ -150,7 +150,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// identifica o valor que será atribuido para uma variável 
     private Void visitaExpressao(LSQLParser.ExpressaoContext ctx, String identificadorTabela) {
 
         var teste = ctx.getText();
@@ -159,7 +159,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// identifica os termos lógicos que estão na expressão
     private Void visitaTermo_logico(LSQLParser.Termo_logicoContext ctx, String identificadorTabela) {
 
         var teste = ctx.getText();
@@ -168,7 +168,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// identifica os termos factor que estão nos termos
     private Void visitaFator_logico(LSQLParser.Fator_logicoContext ctx, String identificadorTabela){
 
         var teste = ctx.getText();
@@ -177,7 +177,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// identifica os operadores de comparações entre termos
     private Void visitaExpressao_relacional(LSQLParser.Expressao_relacionalContext ctx, String identificadorTabela) {
 
         var teste = ctx.getText();
@@ -186,7 +186,7 @@ public class Semantico extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// visita a expressão aritimetica 
     private Void visitaExpressao_aritmetica(List<LSQLParser.Expressao_aritmeticaContext> ctxList, String identificadorTabela) {
 
         var ctxLeft = ctxList.get(0);
