@@ -8,7 +8,7 @@ public class SemanticoUtils {
     private static LSQLParser.IdentificadorContext identifier = null;
     private static LSQLParser.ExpressaoContext expression = null;
     private static EntradaTabelaDeSimbolos identifierEntradaTabela = null;
-
+// recebe o erro  para estruturar a saída apontando o erro semantico
     public static void adicionaErroSemantico(EntradaTabelaDeSimbolos entradaTabelaDeSimbolos, int linha, ErrosSemanticos tipoErro){
 
         var variavel = entradaTabelaDeSimbolos.nome;
@@ -25,7 +25,7 @@ public class SemanticoUtils {
 
         errosSemanticos.add(erroSemantico.toString());
     }
-
+// adiciona mais erros semanticos
     public static void adicionaErroSemantico(String variavel, int linha, ErrosSemanticos tipoErro) {
 
         if (getErrosSemanticos().contains(variavel)){
@@ -40,7 +40,7 @@ public class SemanticoUtils {
 
         errosSemanticos.add(erroSemantico.toString());
     }
-
+// case para cada tipo de erro semantico
     private static String switchErrorMsg(ErrosSemanticos tipoErro, String variavel){
         switch (tipoErro){
             case IDENTIFICADOR_EXISTENTE:
@@ -55,7 +55,7 @@ public class SemanticoUtils {
                 return "";
         }
     }
-
+// case com erros de tipos semanticos
     public static Tipos verificarTipo(String tipo){
 
         switch (tipo){
@@ -72,7 +72,7 @@ public class SemanticoUtils {
         }
 
     }
-
+// compara tipo de variavel vs tipo do texto
     public static boolean comparaTipo(Tipos tipo1, Tipos tipo2){
 
         if (tipo1.equals(tipo2))
