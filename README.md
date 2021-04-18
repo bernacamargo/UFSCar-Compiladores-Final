@@ -28,7 +28,7 @@ O objetivo desta etapa é elaborar uma linguagem simples e desenvolver o compila
 3. Agora basta executar o programa baixado através de um terminal. Para isso utilizaremos o comando `java -jar` juntamente com os seguintes parâmetros:
 
    - **ARG1:** O caminho absoluto para o arquivo baixado no passo anterior;
-   - **ARG2:** O caminho absoluto do arquivo de entrada que contém o código em LA;
+   - **ARG2:** O caminho absoluto do arquivo de entrada que contém o código em LSQL;
    - **ARG3:** O caminho absoluto do arquivo de saída.
 
    <br>
@@ -40,3 +40,77 @@ O objetivo desta etapa é elaborar uma linguagem simples e desenvolver o compila
    > Os caminhos enviados como parâmetros devem ser **absolutos**!
 
 4. Feito isso será criado o arquivo de saída com a análise lexica, sintatica e semantica do algoritmo de entrada. Caso o compilador não encontre problemas nestas análises, será escrito no arquivo de saída o código em querys SQL relativo ao arquivo de entrada.
+
+### Exemplo para testar o gerador de código:
+> O arquivo executável .jar está na pasta raiz do projeto;
+
+-   Comando:
+
+    ```sh
+    $ java -jar /home/user/compiladores/UFSCAR-Compiladores-Final/compilador.jar  /home/user/compiladores/UFSCar-Compiladores-Final/Casos\ de\     testes/3.casos_gerador_codigo/1.entrada/8.insere_atualiza_mostra.txt /home/user/compiladores/UFSCar-Compiladores-Final/Casos\ de\ testes/3.casos_gerador_codigo\2.exemplos_codigo_SQL\8.insere_atualiza_mostra.txt
+    ```
+
+-   Entrada: 8.insere_atualiza_mostra.txt
+
+    ```
+    inicio
+       cria Funcionario [
+           nome        -> varchar,
+           idade       -> inteiro,
+           cpf         -> inteiro,
+           profissao   -> texto
+       ]
+       cria Aluno [
+           nome        -> varchar,
+           ra          -> inteiro,
+           curso       -> varchar
+       ]
+
+       insere Funcionario nome="Bernardo", cpf=43765478987, idade=41, profissao="Mecânico"
+       insere Funcionario nome="Junir", cpf=67812345985, idade=28, profissao="Astronauta"
+       insere Funcionario nome="Jose Pedro", cpf=7891875232, idade=34, profissao="Advogado "
+
+       atualiza Funcionario onde nome="Bernardo" e cpf=43765478987 para nome="Beto", profissao="Engenheiro Mecanico"
+
+       atualiza Aluno onde nome="Paulo" e ra=757485 para curso="Economia"
+
+       mostra todos Funcionario onde idade > 17 e idade < 35
+
+    fim
+    ```
+
+-   Saída: 8.insere_atualiza_mostra
+
+    ```
+      CREATE TABLE Funcionario ( 
+         nome VARCHAR(255),
+         idade INT,
+         cpf INT,
+         profissao TEXT
+      );
+
+      CREATE TABLE Aluno ( 
+         nome VARCHAR(255),
+         ra INT,
+         curso VARCHAR(255)
+      );
+
+      INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Bernardo", 43765478987, 41, "Mecânico");
+
+      INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Junir", 67812345985, 28, "Astronauta");
+
+      INSERT INTO Funcionario (nome, cpf, idade, profissao) VALUES ("Jose Pedro", 7891875232, 34, "Advogado ");
+
+      UPDATE Funcionario SET nome = "Beto", profissao = "Engenheiro Mecanico"
+         WHERE nome = "Bernardo" AND
+         cpf = 43765478987;
+
+      UPDATE Aluno SET curso = "Economia"
+         WHERE nome = "Paulo" AND
+         ra = 757485;
+
+      SELECT * FROM Funcionario
+         WHERE idade > 17 AND
+         idade < 35;
+
+    ```
