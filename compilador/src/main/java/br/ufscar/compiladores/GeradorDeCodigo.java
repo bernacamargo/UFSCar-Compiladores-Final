@@ -41,7 +41,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// estrutura a operação de CREATE TABLE
     @Override
     public Void visitCmd_cria(LSQLParser.Cmd_criaContext ctx) {
 
@@ -54,7 +54,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
         saida.append(");\n\n");
         return null;
     }
-
+// visita a declaração de variavel
     public Void visitaDeclaracao_var(List<LSQLParser.Declaracao_varContext> ctxLista) {
 
         for (int i=0; i < ctxLista.size(); i++) {
@@ -77,7 +77,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// cria a estrutura da operação SELECT
     @Override
     public Void visitCmd_mostra(LSQLParser.Cmd_mostraContext ctx) {
 
@@ -93,7 +93,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
         saida.append(";\n\n");
         return null;
     }
-
+// visita as colunas das variaveis
     @Override
     public Void visitColunas(LSQLParser.ColunasContext ctx) {
 
@@ -113,7 +113,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// cria a estrutura da operação de INSERT
     @Override
     public Void visitCmd_insere(LSQLParser.Cmd_insereContext ctx) {
         var ident = ctx.identificador().getText();
@@ -127,7 +127,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// cria a estrutura da operação de UPDATE
     @Override
     public Void visitCmd_atualiza(LSQLParser.Cmd_atualizaContext ctx) {
 
@@ -154,7 +154,7 @@ public class GeradorDeCodigo extends LSQLBaseVisitor<Void>{
 
         return null;
     }
-
+// cria a estrutura da operação DELETE
     @Override
     public Void visitCmd_apaga(LSQLParser.Cmd_apagaContext ctx) {
 
